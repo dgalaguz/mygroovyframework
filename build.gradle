@@ -1,0 +1,49 @@
+group 'learning'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+
+
+sourceCompatibility = 1.8
+
+ext {
+    spockVersion = '1.1-groovy-2.4'
+    gebVersion = '2.0'
+    seleniumVersion = '3.8.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.10'
+    compile group: 'org.spockframework', name: 'spock-core', version: spockVersion
+    compile group: 'org.gebish', name: 'geb-core', version: gebVersion
+    compile group: 'org.gebish', name: 'geb-spock', version: gebVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
+
+    testCompile("io.github.bonigarcia:webdrivermanager:1.4.1") {
+        exclude group: 'org.seleniumhq.selenium'
+    }
+
+    testCompile 'com.athaydes:spock-reports:1.4.0'
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+}
+
+test {
+    dependsOn 'cleanTest'
+
+    include("specs/GoogleSearchSpec.class")
+    reports {
+        junitXml.destination = file("$buildDir/test-results/$name")
+    }
+
+    systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
+}
