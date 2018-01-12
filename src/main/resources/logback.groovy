@@ -12,7 +12,7 @@ appender("STDOUT", ConsoleAppender) {
 }
 appender("FILE", RollingFileAppender) {
     rollingPolicy(TimeBasedRollingPolicy) {
-        fileNamePattern = "log/generated %d{yyyy-MM-dd} %d{HH-mm-ss}.log"
+        fileNamePattern = "log/generated %d{yyyy-MM-dd} %d{HH-mm}.log"
         maxHistory = 7
     }
     encoder(PatternLayoutEncoder) {

@@ -18,7 +18,7 @@ class GoogleSearchSpec extends BaseTestSpec{
 
         where:
         query    | _
-        "46"     | _
+        "42"     | _
         "qwerty" | _
     }
 }

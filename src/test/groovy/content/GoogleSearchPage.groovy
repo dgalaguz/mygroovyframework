@@ -1,9 +1,11 @@
 package content
+
+import common.BaseTestPage
 import geb.Page
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 
-class GoogleSearchPage extends Page{
+class GoogleSearchPage extends BaseTestPage{
     static url = "https://www.google.com"
 
     static at = {searchField.displayed}
