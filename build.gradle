@@ -45,5 +45,7 @@ test {
         junitXml.destination = file("$buildDir/test-results/$name")
     }
 
+    systemProperty "browser", "chrome"
+
     systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
 }

@@ -1,13 +1,14 @@
+import common.Driver
+import common.utils.Utils
 import extention.NonEmptyNavigator
 import geb.Browser
 import geb.navigator.EmptyNavigator
-import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.chrome.ChromeDriver
 
-ChromeDriverManager.getInstance().setup()
 
-driver = { new ChromeDriver() }
+driver = { Driver.getInstance(System.properties.getProperty("browser"))}
+baseUrl = Utils.ReadDataFromPath(Utils.getPathForTestData()).baseUrl
+
 reportsDir = new File("target/runtime_reports_dir")
 
 innerNavigatorFactory = { Browser browser, List<WebElement> elements ->

@@ -33,6 +33,7 @@ class BaseTestPage extends Page {
             locator = locator.substring(locator.indexOf('->')+3)[0..-2]
 
             ((JavascriptExecutor)driver).executeScript("arguments[0].click()", element)
+
             log.info("Click on element Using JS [" + locator + "]")
             return true
         }
