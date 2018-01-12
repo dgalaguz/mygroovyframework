@@ -14,9 +14,8 @@ class GoogleSearchPage extends Page{
     }
 
     def search(String query){
-        def field = searchField.firstElement()
-        field.sendKeys(query)
-        field.sendKeys(Keys.ENTER)
+        searchField.value(query)
+        searchField << Keys.ENTER
     }
 
     def resultsAreDisplayed(){
