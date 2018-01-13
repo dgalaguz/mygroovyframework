@@ -47,5 +47,7 @@ test {
 
     systemProperty "browser", "chrome"
 
+    systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
+
     systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
 }

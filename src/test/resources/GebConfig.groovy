@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement
 
 
 driver = { Driver.getInstance(System.properties.getProperty("browser"))}
-baseUrl = Utils.ReadDataFromPath(Utils.getPathForTestData()).baseUrl
+baseUrl = Utils.ReadDataFromPath(System.properties.getProperty("pathToTestData")).baseUrl
 
 reportsDir = new File("target/runtime_reports_dir")
 
