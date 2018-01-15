@@ -29,8 +29,7 @@ class Driver {
                     driverInstance = new ChromeDriver(options)
 
                     driverInstance.manage().window().setPosition(new  Point(0,0))
-                    def screenDimensions = new Dimension(Toolkit.defaultToolkit.getScreenSize().width.toInteger(), Toolkit.defaultToolkit.getScreenSize().height.toInteger())
-                    driverInstance.manage().window().setSize(screenDimensions)
+                    driverInstance.manage().window().setSize(new Dimension(Toolkit.defaultToolkit.getScreenSize().width.toInteger(), Toolkit.defaultToolkit.getScreenSize().height.toInteger()))
 
                     driverInstance
                     break

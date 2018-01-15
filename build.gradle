@@ -36,18 +36,24 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
 }
 
+ext {
+    browser = System.properties['browser'] ? System.properties['browsers'] : "chrome"
+
+    includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
+}
+
 
 test {
+
     dependsOn 'cleanTest'
 
-    include("specs/**")
-    reports {
-        junitXml.destination = file("$buildDir/test-results/$name")
+    includeTests.each {
+        include("specs/" + it)
     }
 
     maxParallelForks = 2
 
-    systemProperty "browser", "chrome"
+    systemProperty "browser", browser
 
     systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
 
