@@ -1,5 +1,5 @@
 import common.Driver
-import common.utils.Utils
+import utils.Utils
 import extention.NonEmptyNavigator
 import geb.Browser
 import geb.navigator.EmptyNavigator
