@@ -28,8 +28,14 @@ class Driver {
                     ChromeDriverManager.getInstance().setup()
                     driverInstance = new ChromeDriver(options)
 
-                    driverInstance.manage().window().setPosition(new  Point(0,0))
-                    driverInstance.manage().window().setSize(new Dimension(Toolkit.defaultToolkit.getScreenSize().width.toInteger(), Toolkit.defaultToolkit.getScreenSize().height.toInteger()))
+                    if (System.properties['os.name'].toLowerCase().contains('windows')){
+                        driverInstance.manage().window().maximize()
+                    }
+                    else
+                    {
+                        driverInstance.manage().window().setPosition(new  Point(0,0))
+                        driverInstance.manage().window().setSize(new Dimension(Toolkit.defaultToolkit.getScreenSize().width.toInteger(), Toolkit.defaultToolkit.getScreenSize().height.toInteger()))
+                    }
 
                     driverInstance
                     break
