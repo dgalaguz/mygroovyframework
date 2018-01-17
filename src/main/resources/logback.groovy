@@ -1,13 +1,12 @@
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder
-import ch.qos.logback.core.ConsoleAppender
-import ch.qos.logback.core.rolling.RollingFileAppender
-import ch.qos.logback.core.rolling.TimeBasedRollingPolicy
+import utils.GradleTestWorkerConverter
 
 import static ch.qos.logback.classic.Level.INFO
+conversionRule("worker", GradleTestWorkerConverter)
 
 appender("STDOUT", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
-        pattern = "%d{HH:mm:ss} %logger{0} %msg%n"
+        pattern = "[%worker] %d{HH:mm:ss} %logger{0} %msg%n"
     }
 }
 appender("FILE", RollingFileAppender) {
