@@ -2,11 +2,12 @@ import ch.qos.logback.classic.encoder.PatternLayoutEncoder
 import utils.GradleTestWorkerConverter
 
 import static ch.qos.logback.classic.Level.INFO
+
 conversionRule("worker", GradleTestWorkerConverter)
 
 appender("STDOUT", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
-        pattern = "[%worker] %d{HH:mm:ss} %logger{0} %msg%n"
+        pattern = "[%worker] %d{HH:mm:ss:SSS} %logger{0} %msg%n"
     }
 }
 appender("FILE", RollingFileAppender) {
@@ -15,7 +16,7 @@ appender("FILE", RollingFileAppender) {
         maxHistory = 7
     }
     encoder(PatternLayoutEncoder) {
-        pattern = "%d{HH:mm:ss} %logger{0} %msg%n"
+        pattern = "[%worker] %d{HH:mm:ss:SSS} %logger{0} %msg%n"
     }
 }
 root(INFO, ["FILE", "STDOUT"])
