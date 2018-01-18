@@ -15,10 +15,10 @@ class GoogleSearchSpec extends BaseTestSpec{
 
         then: "Verify the search results"
         googlePage.resultsAreDisplayed()
+        1!=1
 
         where:
         query    | _
         "42"     | _
-        "qwerty" | _
     }
 }
