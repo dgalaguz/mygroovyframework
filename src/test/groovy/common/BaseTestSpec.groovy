@@ -21,8 +21,8 @@ class BaseTestSpec extends GebReportingSpec{
         def specFolder = new File(browser.config.reportsDir.path + "\\specs\\" + specName)
         def screenshots = specFolder.listFiles().findAll {it.name.endsWith("failure.png")}
         if(screenshots){
-            reportHeader("<b>Screenshots of Failures:</b>")
-            screenshots.eachWithIndex {item, index -> reportHeader('<a href='+ item.toURI() +'>'+ 'screenshot '+ (index+1) +'</a>')}
+            reportHeader("<b>Screenshots of Failed features:</b>")
+            screenshots.eachWithIndex {item, index -> reportHeader('<a href='+ item.toURI() +'>'+ ((item.name =~ /\d\-([A-z].*)-failure.png/)[0][1]) +'</a>')}
         }
     }
 }
