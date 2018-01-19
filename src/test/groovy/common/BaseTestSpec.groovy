@@ -1,28 +1,30 @@
 package common
 
-import com.athaydes.spockframework.report.SpecInfoListener
 import geb.spock.GebReportingSpec
 import groovy.util.logging.Slf4j
-import spock.lang.IgnoreIf
+import org.apache.commons.io.FileUtils
+import org.yaml.snakeyaml.util.UriEncoder
 import spock.lang.Shared
-import sun.security.provider.SHA
 
 @Slf4j
 class BaseTestSpec extends GebReportingSpec{
     @Shared def specName =  specificationContext.currentSpec.name
-    @Shared def listener = specificationContext.currentSpec.listeners.find{it.class == SpecInfoListener}
 
     def setup(){
         log.info("Starting...")
     }
 
     def cleanupSpec(){
-        def runs = listener.specData.featureRuns
         def specFolder = new File(browser.config.reportsDir.path + "\\specs\\" + specName)
         def screenshots = specFolder.listFiles().findAll {it.name.endsWith("failure.png")}
+
         if(screenshots){
+            screenshots.each {FileUtils.copyFile(it, new File("build/spock-reports/screenshots/" + specName + "/" + it.name))}
+
+            def screenshotsWithLinks = screenshots.collectEntries {[(it.name) :"screenshots/"+ specName + "/" + UriEncoder.encode(it.name)]}
+
             reportHeader("<b>Screenshots of Failed features:</b>")
-            screenshots.eachWithIndex {item, index -> reportHeader('<a href='+ item.toURI() +'>'+ ((item.name =~ /\d\-([A-z].*)-failure.png/)[0][1]) +'</a>')}
+            screenshotsWithLinks.each{reportHeader('<a href='+ it.value +' target="_blank">'+ it.key +'</a>')}
         }
     }
 }

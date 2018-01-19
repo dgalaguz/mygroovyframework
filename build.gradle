@@ -47,6 +47,8 @@ test {
 
     dependsOn 'cleanTest'
 
+    delete "build/spock-reports"
+
     includeTests.each {
         include("specs/" + it)
     }
