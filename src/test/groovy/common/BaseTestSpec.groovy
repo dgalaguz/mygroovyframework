@@ -15,7 +15,7 @@ class BaseTestSpec extends GebReportingSpec{
     }
 
     def cleanupSpec(){
-        def specFolder = new File(browser.config.reportsDir.path + "\\specs\\" + specName)
+        def specFolder = new File(browser.config.reportsDir.path + "/specs/" + specName)
         def screenshots = specFolder.listFiles().findAll {it.name.endsWith("failure.png")}
 
         if(screenshots){
