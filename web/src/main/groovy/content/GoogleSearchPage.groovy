@@ -1,7 +1,6 @@
 package content
 
 import common.BaseTestPage
-import geb.Page
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 

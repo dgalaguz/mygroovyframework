@@ -1,16 +1,30 @@
-group 'learning'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'groovy'
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
+dependencies {
+    compile project(':common')
+    compile("io.github.bonigarcia:webdrivermanager:2.0.1")
 }
 
-dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+ext {
+    browser = System.properties['browser'] ? System.properties['browsers'] : "chrome"
+
+    includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
+}
+
+
+test {
+
+    dependsOn 'cleanTest'
+
+    delete "build/spock-reports"
+
+    includeTests.each {
+        include("specs/" + it)
+    }
+
+    maxParallelForks = 2
+
+    systemProperty "browser", browser
+
+    systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
+
+    systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
 }

@@ -12,7 +12,7 @@ baseUrl = CommonUtils.ReadDataFromPath(System.properties.getProperty("pathToTest
 //Geb runtime reports
 reportsDir = new File("target/runtime_reports_dir")
 
-//Custom inner navigator factory for logging, see: extention.NonEmptyNavigator
+//Custom inner navigator factory for logging, see: NonEmptyNavigator
 innerNavigatorFactory = { Browser browser, List<WebElement> elements ->
     elements ? new NonEmptyNavigator(browser, elements) : new EmptyNavigator(browser)
 }

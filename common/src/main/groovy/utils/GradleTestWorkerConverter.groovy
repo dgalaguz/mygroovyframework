@@ -4,7 +4,7 @@ import ch.qos.logback.classic.pattern.ClassicConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 
 /**
- * Provides the number of the current Fork to the logback.
+ * Provides the number of the current Fork to the common.logback.
  * Useful when multiple tests run in parallel.
  * Helps keep track of which fork is logging.
  */

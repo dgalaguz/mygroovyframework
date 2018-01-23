@@ -1,7 +1,6 @@
 package utils
 
 import groovy.json.JsonSlurper
-import java.io.File
 
 /**
  * Contains commonly used tools

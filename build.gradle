@@ -1,63 +1,13 @@
 group 'learning'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'groovy'
-apply plugin: 'java'
+subprojects{
+    apply plugin: 'groovy'
+    apply plugin: 'java'
 
-sourceCompatibility = 1.8
+    sourceCompatibility = 1.8
 
-ext {
-    spockVersion = '1.1-groovy-2.4'
-    gebVersion = '2.0'
-    seleniumVersion = '3.8.1'
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.10'
-
-    compile group: 'org.spockframework', name: 'spock-core', version: spockVersion
-    compile group: 'org.gebish', name: 'geb-core', version: gebVersion
-    compile group: 'org.gebish', name: 'geb-spock', version: gebVersion
-
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: seleniumVersion
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
-
-    testCompile("io.github.bonigarcia:webdrivermanager:2.0.1")
-
-    testCompile 'com.athaydes:spock-reports:1.4.0'
-
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
-}
-
-ext {
-    browser = System.properties['browser'] ? System.properties['browsers'] : "chrome"
-
-    includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
-}
-
-
-test {
-
-    dependsOn 'cleanTest'
-
-    delete "build/spock-reports"
-
-    includeTests.each {
-        include("specs/" + it)
+    repositories {
+        mavenCentral()
     }
-
-    maxParallelForks = 2
-
-    systemProperty "browser", browser
-
-    systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
-
-    systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
 }
