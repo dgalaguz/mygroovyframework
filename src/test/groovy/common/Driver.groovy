@@ -13,6 +13,7 @@ import java.awt.Toolkit
 
 /**
  * Driver creation and basic configuration
+ * Currently implemented browsers: chrome, firefox
  */
 class Driver {
 
