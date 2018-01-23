@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement
 
 import groovy.util.logging.Slf4j
 
+/**
+ * Automatically logs main interactions with the page content.
+ * This class used as Geb inner navigator factory, see GebConfig.groovy
+ */
 @Slf4j
 class NonEmptyNavigator extends geb.navigator.NonEmptyNavigator {
     NonEmptyNavigator(Browser browser, Collection<? extends WebElement> contextElements) {

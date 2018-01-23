@@ -6,7 +6,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 
 class GoogleSearchPage extends BaseTestPage{
-    //static url = "https://www.google.com"
 
     static at = {searchField.displayed}
 

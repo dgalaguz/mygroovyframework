@@ -12,7 +12,7 @@ import org.openqa.selenium.Dimension
 import java.awt.Toolkit
 
 /**
- * Driver creation
+ * Driver creation and basic configuration
  */
 class Driver {
 
@@ -28,6 +28,12 @@ class Driver {
                     ChromeDriverManager.getInstance().setup()
                     driverInstance = new ChromeDriver(options)
 
+                    /*
+                    Browser maximizing implemented this way because of WebDriver issue with mac and linux.
+                    If two tests start in parallel one browser is going to be maximized and the other is not.
+                    This is specific only to chrome(mac, linux).
+                    Following code resolves this problem.
+                    */
                     if (System.properties['os.name'].toLowerCase().contains('windows')){
                         driverInstance.manage().window().maximize()
                     }

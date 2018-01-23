@@ -5,6 +5,11 @@ import groovy.util.logging.Slf4j
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebElement
 
+/**
+ * All of your app Pages should be extended from this class.
+ * It Provides logging and some other useful features.
+ */
+
 @Slf4j
 class BaseTestPage extends Page {
 
@@ -44,10 +49,8 @@ class BaseTestPage extends Page {
     }
 
     /**
-     * Scrolls to the web element
-     * Web element is placed in the middle of the screen after function is applied
-     * @param element
-     * @return
+     * Scrolls to the web element.
+     * Web element is placed in the middle of the screen after function is applied.
      */
     def scrollToElementUsingJS(WebElement element){
         try {
@@ -59,8 +62,8 @@ class BaseTestPage extends Page {
 
             js.exec('window.scrollTo(0,' + (scrollToY).toString() + ')')
 
-            log.info("Scrolled To Elemant Using JS [" + locator + "]")
-            log.info("Element position Y: " + position)
+            log.info("Scrolled To Element Using JS [" + locator + "]")
+            log.info("Element position by Y: " + position)
             return true
 
         } catch (Exception e){

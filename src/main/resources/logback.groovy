@@ -1,7 +1,10 @@
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder
 import utils.GradleTestWorkerConverter
-
 import static ch.qos.logback.classic.Level.INFO
+
+/**
+ * Logging configuration
+ */
 
 conversionRule("worker", GradleTestWorkerConverter)
 
