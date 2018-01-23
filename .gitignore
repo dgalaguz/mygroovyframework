@@ -2,8 +2,8 @@
 out/**
 build/**
 .idea/**
-target/**
+**/target/**
 gradlew*
 gradle/**
 *.iml
-log/**
+**/log/**
