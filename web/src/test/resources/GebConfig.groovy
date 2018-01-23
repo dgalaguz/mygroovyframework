@@ -10,7 +10,7 @@ driver = { Driver.getInstance(System.properties.getProperty("browser"))}
 baseUrl = CommonUtils.ReadDataFromPath(System.properties.getProperty("pathToTestData")).baseUrl
 
 //Geb runtime reports
-reportsDir = new File("target/runtime_reports_dir")
+reportsDir = new File("build/geb_runtime_reports")
 
 //Custom inner navigator factory for logging, see: NonEmptyNavigator
 innerNavigatorFactory = { Browser browser, List<WebElement> elements ->
