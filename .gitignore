@@ -1,9 +1,6 @@
 .gradle/**
-out/**
-build/**
+**/build/**
 .idea/**
-**/target/**
 gradlew*
 gradle/**
 *.iml
-**/log/**
