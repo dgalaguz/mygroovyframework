@@ -4,11 +4,18 @@ dependencies {
 }
 
 ext {
+    //Type of Browser to use
+    //e.g.: -Dbrowser=chrome
     browser = System.properties['browser'] ? System.properties['browsers'] : "chrome"
 
+    //Specs or folders of specs to include
+    //e.g.: -Dinclude.tests=GoogleSearchSpec.class;GoogleSearchSpec2.class
+    //e.g.: -Dinclude.tests=DirectoryWithSpecs/**
     includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
 
-    forks = System.properties['forks'] ? System.properties['forks'] : 1
+    //Number of specs to run in parallel
+    //e.g.: -Dforks=2
+    forks = System.properties['forks'] ? System.properties['forks'].toInteger() : 1
 
 }
 
