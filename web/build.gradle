@@ -7,11 +7,13 @@ ext {
     browser = System.properties['browser'] ? System.properties['browsers'] : "chrome"
 
     includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
+
+    forks = System.properties['forks'] ? System.properties['forks'] : 1
+
 }
 
 
 test {
-
     dependsOn 'cleanTest'
 
     delete "build/spock-reports"
@@ -20,11 +22,15 @@ test {
         include("specs/" + it)
     }
 
-    maxParallelForks = 2
+    maxParallelForks = forks
 
+    systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
+
+    //To run tests using JUnit following variables need to be set as vm options.
+    //e.g.: -Dbrowser=chrome -DpathToTestData=src/test/groovy/testData/data.json
     systemProperty "browser", browser
 
     systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
 
-    systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
+
 }
