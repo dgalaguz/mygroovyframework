@@ -12,7 +12,7 @@ baseUrl = CommonUtils.ReadDataFromPath(System.properties.getProperty("pathToTest
 //Geb runtime reports
 reportsDir = new File("build/geb_runtime_reports")
 
-//Custom inner navigator factory for logging, see: NonEmptyNavigator
+//Custom inner navigator factory for logging, see: common/src/main/groovy/extention/NonEmptyNavigator.groovy
 innerNavigatorFactory = { Browser browser, List<WebElement> elements ->
     elements ? new NonEmptyNavigator(browser, elements) : new EmptyNavigator(browser)
 }

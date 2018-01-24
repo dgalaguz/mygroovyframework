@@ -1,5 +1,8 @@
 dependencies {
+    //getting dependencies from common module
     compile project(':common')
+
+    //automatic WebDriver binary download and setup
     compile("io.github.bonigarcia:webdrivermanager:2.0.1")
 }
 
@@ -8,7 +11,7 @@ ext {
     //e.g.: -Dbrowser=chrome
     browser = System.properties['browser'] ? System.properties['browsers'] : "chrome"
 
-    //Specs or folders of specs to include
+    //Specs to include
     //e.g.: -Dinclude.tests=GoogleSearchSpec.class;GoogleSearchSpec2.class
     //e.g.: -Dinclude.tests=DirectoryWithSpecs/**
     includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
