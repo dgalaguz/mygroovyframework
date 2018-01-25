@@ -1,6 +1,7 @@
 dependencies {
     //getting dependencies from common module
     compile project(':common')
+    //appium client
     compile group: 'io.appium', name: 'java-client', version: '5.0.4'
 }
 
