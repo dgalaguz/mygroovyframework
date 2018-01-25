@@ -22,7 +22,6 @@ ext {
 
 }
 
-
 test {
     dependsOn 'cleanTest'
 
@@ -41,6 +40,4 @@ test {
     systemProperty "browser", browser
 
     systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
-
-
 }

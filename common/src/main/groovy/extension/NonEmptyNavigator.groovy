@@ -1,4 +1,4 @@
-package extention
+package extension
 
 import geb.Browser
 import geb.navigator.Navigator
