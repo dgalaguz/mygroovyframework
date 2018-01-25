@@ -9,7 +9,7 @@ dependencies {
 ext {
     //Type of Browser to use
     //e.g.: -Dbrowser=chrome
-    browser = System.properties['browser'] ? System.properties['browsers'] : "chrome"
+    browser = System.properties['browser'] ? System.properties['browser'] : "chrome"
 
     //Specs to include
     //e.g.: -Dinclude.tests=GoogleSearchSpec.class;GoogleSearchSpec2.class

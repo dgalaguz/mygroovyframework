@@ -7,17 +7,13 @@ dependencies {
 
 ext {
     //Type of Browser to use
-    //e.g.: -Dbrowser=chrome
-    browser = System.properties['browser'] ? System.properties['browsers'] : "android_real"
+    //e.g.: -Ddriver=android_real
+    driver = System.properties['driver'] ? System.properties['driver'] : "android_real"
 
     //Specs to include
-    //e.g.: -Dinclude.tests=GoogleSearchSpec.class;GoogleSearchSpec2.class
+    //e.g.: -Dinclude.tests=CalculatorSpec.class
     //e.g.: -Dinclude.tests=DirectoryWithSpecs/**
     includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
-
-    //Number of specs to run in parallel
-    //e.g.: -Dforks=2
-    forks = System.properties['forks'] ? System.properties['forks'].toInteger() : 1
 }
 
 test {
@@ -29,13 +25,11 @@ test {
         include("specs/" + it)
     }
 
-    maxParallelForks = forks
-
     systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
 
     //To run tests using JUnit following variables need to be set as vm options.
-    //e.g.: -Dbrowser=chrome -DpathToTestData=src/test/groovy/testData/data.json
-    systemProperty "browser", browser
+    //e.g.: -Ddriver=android_real -DpathToTestData=src/test/groovy/testData/data.json
+    systemProperty "driver", driver
 
     systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
 }
