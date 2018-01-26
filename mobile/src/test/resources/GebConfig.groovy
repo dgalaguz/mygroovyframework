@@ -5,7 +5,7 @@ import geb.navigator.EmptyNavigator
 import org.openqa.selenium.WebElement
 
 
-driver = { Driver.getInstance(System.properties.getProperty("browser"))}
+driver = { Driver.getInstance(System.properties.getProperty("driver"))}
 
 //Geb runtime reports
 reportsDir = new File("build/geb_runtime_reports")
