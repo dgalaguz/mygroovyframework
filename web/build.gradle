@@ -3,7 +3,7 @@ dependencies {
     compile project(':common')
 
     //automatic WebDriver binary download and setup
-    compile("io.github.bonigarcia:webdrivermanager:2.0.1")
+    compile("io.github.bonigarcia:webdrivermanager:2.2.1")
 }
 
 ext {
