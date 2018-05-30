@@ -1,4 +1,4 @@
-#mygroovyframework
+# Web automation with groovy
 
 This is basic basic testing framework designed to be used as template for automated web(and/or mobile) testing
 
