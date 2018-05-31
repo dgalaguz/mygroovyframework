@@ -9,19 +9,23 @@ This is basic basic testing framework designed to be used as template for automa
 
 ### Installing
 * **File -> New -> Project from Version Control -> Git**
+
 ![New Project](/../screenshots/2018-05-30_18-58-43.png)
 
 * **Enter repository link: https://github.com/dgalaguz/mygroovyframework.git**
 * **Clone.**
+
 ![New Project](/../screenshots/2018-05-31_13-33-23.png)
 
 * **Import project from External model: Gradle**
+
 ![New Project](/../screenshots/2018-05-30_18-59-02.png)
   
 * **Use auto import.**
 * **Use gradle 'wrapper' task configuration.**
 * **Configure JDK.**
 * **Finish.**
+
 ![New Project](/../screenshots/2018-05-30_18-59-32.png)
   
 ### Useful info
