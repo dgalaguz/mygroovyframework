@@ -40,13 +40,13 @@ class BaseTestSpec extends GebReportingSpec{
 
         // If any screenshots were made:
         if(screenshots){
-            // Copy screenshots to the spock-reports dir
+            // Copy screenshots to the spock-reports dir.
             screenshots.each {FileUtils.copyFile(it, new File("build/spock-reports/screenshots/" + specName + "/" + it.name))}
 
-            // Generating relative URLs for the screenshots
+            // Generating relative URLs for the screenshots.
             def screenshotsWithLinks = screenshots.collectEntries {[(it.name) :"screenshots/"+ specName + "/" + UriEncoder.encode(it.name)]}
 
-            // Adding the links to screenshots to the report header
+            // Adding the links to screenshots to the report header.
             reportHeader("<b>Screenshots of Failed features:</b>")
             screenshotsWithLinks.each{reportHeader('<a href='+ it.value +' target="_blank">'+ it.key +'</a>')}
         }

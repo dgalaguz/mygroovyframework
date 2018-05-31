@@ -34,7 +34,7 @@ class CalculatorSpec extends  BaseTestSpec{
         calcPage.typeOperation("+")
         calcPage.typeDigit(2)
 
-        //this is an intentional fail point, to demonstrate how failed features are reflected in report, see build/spock-reports
+        // This is an intentional fail point, to demonstrate how failed features are reflected in report, see build/spock-reports
         then: "Result = 5"
         calcPage.getResult() == 5
     }

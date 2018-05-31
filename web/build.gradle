@@ -1,30 +1,31 @@
 dependencies {
-    //getting dependencies from common module
+    // Getting dependencies from common module.
     compile project(':common')
 
-    //automatic WebDriver binary download and setup
+    // Automatic WebDriver binary download and setup.
     compile("io.github.bonigarcia:webdrivermanager:2.2.1")
 }
 
 ext {
-    //Type of Browser to use
-    //e.g.: -Dbrowser=chrome
+    // Type of Browser to use.
+    // e.g.: -Dbrowser=chrome
     browser = System.properties['browser'] ? System.properties['browser'] : "chrome"
 
-    //Specs to include
-    //e.g.: -Dinclude.tests=GoogleSearchSpec.class;GoogleSearchSpec2.class
-    //e.g.: -Dinclude.tests=DirectoryWithSpecs/**
+    // Specs to include.
+    // You can run list of specific tests: -Dinclude.tests=GoogleSearchSpec.class;GoogleSearchSpec2.class
+    // Or entire folder: -Dinclude.tests=DirectoryWithSpecs/**
+    // If nor specified entire 'specs' folder will be run.
     includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
 
-    //Number of specs to run in parallel
-    //e.g.: -Dforks=2
+    // Number of specs to run in parallel.
+    // e.g.: -Dforks=2
     forks = System.properties['forks'] ? System.properties['forks'].toInteger() : 1
 
+    pathToTestData = System.properties['pathToTestData'] ? System.properties['pathToTestData'] : "src/test/groovy/testData/data.json"
 }
 
 test {
     dependsOn 'cleanTest'
-
     delete "build/spock-reports"
 
     includeTests.each {
@@ -35,9 +36,9 @@ test {
 
     systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
 
-    //To run tests using JUnit following variables need to be set as vm options.
-    //e.g.: -Dbrowser=chrome -DpathToTestData=src/test/groovy/testData/data.json
+    // To run tests using JUnit following variables need to be set as vm options.
+    // e.g.: -Dbrowser=chrome -DpathToTestData=src/test/groovy/testData/data.json
     systemProperty "browser", browser
-
-    systemProperty "pathToTestData", "src/test/groovy/testData/data.json"
+    systemProperty "pathToTestData", pathToTestData
 }
+

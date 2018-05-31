@@ -18,7 +18,7 @@ class GoogleSearchSpec extends BaseTestSpec{
 
         then: "Verify the search results"
         googlePage.resultsAreDisplayed()
-        //this is an intentional fail point, to demonstrate how failed features are reflected in report, see build/spock-reports
+        // This is an intentional fail point, to demonstrate how failed features are reflected in report, see build/spock-reports
         1!=1
 
         //Data providers:
