@@ -2,6 +2,7 @@ package common
 
 import io.github.bonigarcia.wdm.ChromeDriverManager
 import io.github.bonigarcia.wdm.FirefoxDriverManager
+import io.github.bonigarcia.wdm.WebDriverManager
 import org.openqa.selenium.Point
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
@@ -26,7 +27,7 @@ class Driver {
                     ChromeOptions options = new ChromeOptions()
                     options.addArguments("disable-infobars")
 
-                    ChromeDriverManager.getInstance().setup()
+                    WebDriverManager.chromedriver().setup()
                     driverInstance = new ChromeDriver(options)
 
                     /*
@@ -48,7 +49,7 @@ class Driver {
                     driverInstance
                     break
                 case "firefox":
-                    FirefoxDriverManager.getInstance().setup()
+                    WebDriverManager.firefoxdriver().setup()
                     driverInstance = new FirefoxDriver()
 
                     driverInstance.manage().window().maximize()
